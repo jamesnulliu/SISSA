@@ -1,0 +1,32 @@
+Data:
+  # Raw data path
+  raw_path: data/raw/data.csv
+  # The place to save the processed raw data.
+  processed_dir: data/processed-onehot
+  # The place to save labeled and splitted train data.
+  train_dir: data/train
+  # The place to save labeled and splitted validation data.
+  val_dir: data/val
+
+Preprocessor:
+  # Name of each class
+  class_names:
+    - Normal
+    - DDos
+    - FI
+    - FS
+    - ReqNoRes
+    - ResNoReq
+    - Failure
+  # Height of each time window.
+  window_height: 64
+  # Step for splitting windows.
+  step: 7
+  # Use multiprocessing to split windows.
+  use_multiprocessing: false
+  # Use onehot to encode packets.
+  use_onehot: true
+  # [AUTO-UPDATE] Number of classes to classify
+  n_classes: 7
+  # [AUTO-UPDATE] Width of each time window; Differs according to different encoding strategy.
+  window_width: 25

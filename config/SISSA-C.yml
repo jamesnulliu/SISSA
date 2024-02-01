@@ -1,0 +1,68 @@
+Model:
+  type: SISSA_CNN
+  name: SISSA-C
+
+Params:
+  # Output of PMB (shape: (n_pack, n_pack)) will be interpolated to shape (hidden_img_size, hidden_img_size).
+  hidden_img_size: 64
+  # Kernel size
+  kernel_size: 3
+  # Stride
+  stride: 1
+  # Padding
+  padding: 1
+  # Whether to use attention mechanism.
+  attention: false
+  # Number of packets in a window.
+  # [AUTO-UPDATE] Sync with [basic.yml][Preprocessor.window_height] (sissautils.py, `update_model_config()`)
+  n_pack: 80
+  # Dimension of a single packet.
+  # [AUTO-UPDATE] Sync with [basic.yml][Preprocessor.window_width] (sissautils.py, `update_model_config()`)
+  pack_dim: 25
+  # Number of classes to classify.
+  # [AUTO-UPDATE] Sync with [basic.yml][Preprocessor.n_classes] (sissautils.py, `update_model_config()`)
+  n_classes: 7
+
+Train:
+  # Directory to store weights
+  weights_dir: results/weights
+  # Directory to store train-acc, val-acc, train-loss... for each epoch
+  train_log_dir: results/train_log
+  # Device to use.
+  device: cuda
+  # Batch size.
+  batch_size: 256
+  # Number of epochs.
+  epochs: 200
+  # Learning rate.
+  lr: 0.0001
+  # Weight decay.
+  weight_decay: 0.00001
+  # Number of workers.
+  n_workers: 1
+  # Whether to pin memory.
+  pin_memory: false
+  # Directory that contains train data and labels.
+  # [AUTO-UPDATE] Sync with [basic.yml][Data.train_dir] (sissautils.py, `update_model_config()`)
+  train_dir: data/train
+  # Directory that contains validation data and labels.
+  # [AUTO-UPDATE] Sync with [basic.yml][Data.val_dir] (sissautils.py, `update_model_config()`)
+  val_dir: data/val
+
+
+Test:
+  # Directory that contains test data and labels.
+  test_dir: data/val
+  # Path to weights.
+  weight_path: results/weights/SISSA-C_w64/e-145_train-acc-0.992_val-acc-0.783.pt
+  # Dir to save test results.
+  out_dir: results/test_result
+  # Device to use.
+  device: cuda
+  # Batch size.
+  batch_size: 1
+  # Number of workers.
+  n_workers: 1
+  # Whether to pin memory.
+  pin_memory: false
+  weights_path: results/weights/SISSA-C/e-150_train-acc-0.99_val-acc-0.766.pt

@@ -1,2 +1,2 @@
 # SISSA
-SOME/IP based Safety and Security Analyzer
+Some/IP based Safety and Security Analyzer
