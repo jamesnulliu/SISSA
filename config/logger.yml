@@ -1,0 +1,16 @@
+Preprocessor:
+  level: INFO
+  to_console: true
+Manipulator:
+  level: CRITICAL
+  to_console: false
+  save_path: logs/manipulator/manipulator.log
+  mode: a
+  max_bytes: 2048576
+  backup_count: 15
+Train:
+  level: INFO
+  to_console: true
+Test:
+  level: INFO
+  to_console: true
